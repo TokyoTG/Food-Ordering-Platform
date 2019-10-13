@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<head>
+ <!--Import Google Icon Font-->
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection"/>
+ <!--Let browser know website is optimized for mobile-->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<title>Home</title>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0f3e5f;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="navbar-brand" style="color: blue;" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand" style="color: blue;" href="guest.html">See Our Foods</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="navbar-brand dropdown-toggle" style="color: blue;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            About Us
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Help</a>
+            <a class="dropdown-item" href="#">Contact Us</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+          <button type="button" class="btn btn-outline-primary mr-sm-2 " data-toggle="modal" data-target="#exampleModalScrollable">
+              User Login
+            </button>
+            <button type="button" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#exampleModalScrollable2">
+                Admin Login
+              </button>
+      </form>
+    </div>
+  </nav>
+  <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">User Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+              <input type="email" id="userEmail" class="form-control" placeholder="Enter Email" required>
+              </div>
+              <div class="form-group">
+              <input type="password" id="userPass" class= "form-control" placeholder="Enter Password" required>
+              </div>
+              <button type="submit" class="btn btn-outline-primary" id="uLog"> Login</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalScrollable2" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalScrollableTitle">Admin Login</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                <input type="text" id="adminN" class="form-control" placeholder="Enter UserName" required>
+                </div>
+                <div class="form-group">
+                <input type="password" id="adminPass" class= "form-control" placeholder="Enter Password" required>
+                </div>
+                <button type="submit" class="btn btn-outline-primary" id="aLogin"> Login</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="js/gen.js"></script> 
+    <script>
+        $("#aLogin").click((e)=>{
+          var correctUser = "admin";
+          var correctPas = "1234";
+          var inputU = $("#adminN").val().toLowerCase();
+          var inputP = $("#adminPass").val();
+          if(correctUser == inputU && correctPas ==  inputP){
+            window.open("admin.html");
+          }else{
+            alert("Incorrect Password or Username");
+          }
+        })
+
+        $("#uLog").click((e)=>{
+          const inputEmail = $("#userEmail").val();
+          const inputPass = $("#userPass").val();
+          if( !inputEmail || !inputPass){
+            alert("Please fill in details");
+          }else{
+          $.ajax({
+            type: 'GET',
+            url: `http://localhost:3000/users?email=${inputEmail}&passord=${inputPass}`,
+            data:{
+              inputEmail,
+              inputEmail
+            },
+            success: function (res) {
+              if(res.length){
+                localStorage.setItem('email', inputEmail);
+              window.open("userPage.html")
+            }else{
+              alert("not ok")
+            } 
+          }
+          })
+        }
+      })
+    </script>
+</body>

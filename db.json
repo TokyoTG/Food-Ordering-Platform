@@ -1,0 +1,44 @@
+{
+  "food": [
+    {
+      "id": 1,
+      "name": "Amala and Ewedu Soup",
+      "price": "1800"
+    },
+    {
+      "name": "Fried",
+      "price": "1200",
+      "id": 2
+    },
+    {
+      "name": "Shawarma",
+      "price": "2500",
+      "id": 3
+    }
+  ],
+  "orderedfoods": [
+    {
+      "id": 1,
+      "name": "Toyeeb",
+      "food": "Amala",
+      "address": "Aja",
+      "quantity": "2"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Toyeeb",
+      "address": "Aja",
+      "favorites": [
+        {
+            "id": 1,
+          "name": "Amala",
+          "price":"1800"
+        }
+      ],
+      "email": "tboynoni@yahoo.com",
+      "password": "toyeeb1"
+    }
+  ]
+}

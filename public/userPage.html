@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<title>User Page</title>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0f3e5f;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="navbar-brand" style="color: blue;" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <a class="navbar-brand" style="color: blue;" href="index.html">Log Out</a>
+          </form>
+        </div>
+      </nav> 
+
+      <div class="modal fade" id="ordermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Order Food</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                  <input type="text" id="inputFood" class="form-control" placeholder="Food Name" readonly>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" id="upPrice" class="form-control" placeholder="Food Price" readonly>
+                  </div>
+                  <div class="form-group">
+                  <input type="number" id="inputQuantity" class= "form-control" placeholder="Number of Plate" required>
+                  </div>
+                  <button type="submit" class="btn btn-success" id="uOrder"> Order</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+  
+      <div class="container">
+      <div class="card" style="width:40rem; align-self: auto;">
+          <div class="card-header">FOOD MENU</div>
+          <div class="card-body">
+              <table class="table table-dark table--hover table-bordered">
+                  <thead>
+                      <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Price (Naira)</th>
+                          <th scope="col">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody id="tabMenu">
+                      
+                  </tbody>
+              </table>
+              </div>
+          </div>
+        </div>
+        <div class="container">
+            <div class="card" style="width:40rem; align-self: auto;">
+                <div class="card-header">FAVORITE FOODS</div>
+                <div class="card-body">
+                    <table class="table table-dark table--hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price (Naira)</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabFav">
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+              </div>
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script>
+
+      populateFood();
+      populateFavFood();
+
+         $("#uLog").click((e)=>{
+           e.preventDefault();
+          const inputEmail = $("#userEmail").val();
+          const inputPass = $("#userPass").val();
+          if( !inputEmail || !inputPass){
+            alert("Please fill in details");
+            return;
+          }else{
+          $.ajax({
+            type: 'GET',
+            url: `http://localhost:3000/users?email=${inputEmail}&passord=${inputPass}`,
+            data:{
+              inputPass,
+              inputEmail
+            },
+            success: function (res) {
+              if(res.length){
+                localStorage.setItem('email', inputEmail);
+              window.location.assign("index.html")
+            }else{
+              alert("not ok");
+            } 
+            },
+            error: function(){
+              alert("invalid");
+            }
+          })
+        }
+      })
+
+      function populateFood(){
+        $.ajax({
+          type: 'GET',
+          url:'http://localhost:3000/food',
+          success: function(food){
+            var tabItem = $("#tabMenu");
+            tabItem.empty();
+            $.each(food, function(i, foods){
+              tabItem.append('<tr><td>'+foods.name+'</td><td>'+foods.price+'</td><td class="text-right"><button class="btn btn-primary mr-sm-2" style= "width:150px;" onClick = "addToFav('+foods.id+')">Add To Favorites</button><button class="btn btn-success my-2 my-sm-0"  style="width:80px;" onClick = "getFoodName('+foods.id+')">Order</button></td></tr>')
+            })
+            
+          }
+
+        })
+      }
+     function getFoodName(id){
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:3000/food/'+id,
+            success: function (food) {
+                $("#inputFood").val(food.name);
+                $("#upPrice").val(food.price);
+                $("#ordermodal").modal('show');
+            },
+            error: function(){
+                console.log('Not found');
+            }
+    })
+      }
+
+      function populateFavFood(){
+        $.ajax({
+          type: 'GET',
+          url:'http://localhost:3000/users/1',
+          success: function(users){
+            var tabItem = $("#tabFav");
+            tabItem.empty();
+            $.each(users.favorites, function(i, food){
+              tabItem.append('<tr><td>'+food.name+'</td><td>'+food.price+'</td><td class="text-right"><button class="btn btn-primary mr-sm-2" style= "width:80px;">Edit</button><button class="btn btn-danger my-2 my-sm-0 " onClick="deluserFood('+food.id+')"  style="width:80px;">Delete</button></td></tr>')
+            })
+            
+          }
+
+        })
+      }
+      function addToFav(id){
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:3000/food/'+id,
+            success: function (food) {
+              var favFood =  $("#inputFood").val(food.name);
+              var favPrice = $("#upPrice").val(food.price);
+              
+            },
+            error: function(){
+                console.log('Not found');
+            }
+    })
+      }
+  
+      function deluserFood (id) {
+         var delCon = window.confirm("Are you sure you want to delete this?");
+         if(delCon !== true){
+            alert("cancelled");
+         }else{
+            $.ajax({
+                type: 'DELETE',
+                url: 'http://localhost:3000/users?favorites.id='+id,
+                success: function () {
+                    alert('record has been deleted')
+                    
+                },
+                error: function(error){
+                    alert("error")
+                }
+            })
+         }
+        } 
+    </script>
+</body>

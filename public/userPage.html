@@ -36,6 +36,7 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group">
+                  <input type="hidden" class="form-control" id="orderId">
                   <input type="text" id="inputFood" class="form-control" placeholder="Food Name" readonly>
                   </div>
                   <div class="form-group">
@@ -149,6 +150,7 @@
             type: 'GET',
             url: 'http://localhost:3000/food/'+id,
             success: function (food) {
+                $("#orderId").val(food.id);
                 $("#inputFood").val(food.name);
                 $("#upPrice").val(food.price);
                 $("#ordermodal").modal('show');
@@ -174,20 +176,52 @@
 
         })
       }
-      function addToFav(id){
+    function addToFav(id){
         $.ajax({
             type: 'GET',
             url: 'http://localhost:3000/food/'+id,
             success: function (food) {
-              var favFood =  $("#inputFood").val(food.name);
-              var favPrice = $("#upPrice").val(food.price);
-              
+               console.log(food.name);
+               console.log(food.price);  
             },
             error: function(){
                 console.log('Not found');
             }
     })
-      }
+  }
+  
+  $("#uOrder").click((e) =>{
+    var final;
+    var oId = $("#orderId").val()
+    var favFood = $("#inputFood").val()
+    var favPrice = $("#upPrice").val()
+      var ele = {
+      food: favFood,
+      price: favPrice 
+    }
+   
+    $.ajax({
+      type: 'GET',
+      url:'http://localhost:3000/users/1',
+    })
+    .done(function(users){
+      final = users.favorites;
+      final[oId] = ele;
+      console.log(JSON.stringify(final));
+      $.ajax({
+        type: 'PATCH',
+        dataType: 'json',
+        url: 'http://localhost:3000/users/1',
+        data: { favorites: JSON.stringify(final)},
+        success: function(){
+          alert("ok");
+        },
+        error: function(){
+          alert("error")
+        }
+      })
+    })
+  })    
   
       function deluserFood (id) {
          var delCon = window.confirm("Are you sure you want to delete this?");
@@ -196,7 +230,7 @@
          }else{
             $.ajax({
                 type: 'DELETE',
-                url: 'http://localhost:3000/users?favorites.id='+id,
+                url: 'http://localhost:3000/users?_embed=favorites/'+id,
                 success: function () {
                     alert('record has been deleted')
                 },

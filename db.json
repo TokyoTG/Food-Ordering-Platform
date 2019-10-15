@@ -32,9 +32,9 @@
       "address": "Aja",
       "favorites": [
         {
-            "id": 1,
+          "id": 1,
           "name": "Amala",
-          "price":"1800"
+          "price": "1800"
         }
       ],
       "email": "tboynoni@yahoo.com",

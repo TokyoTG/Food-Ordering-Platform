@@ -1,37 +1,73 @@
 <!DOCTYPE html>
+
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection"/>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <title>User Page</title>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0f3e5f;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="navbar-brand" style="color: blue;" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <a class="navbar-brand" style="color: blue;" href="index.html">Log Out</a>
-          </form>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0f3e5f;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="navbar-brand" style="color: blue;" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <a class="navbar-brand" style="color: blue;" href="index.html">Log Out</a>
+      </form>
+    </div>
+  </nav>
+  <div class="card" style="width: 50%; height: 50%; background: white, ; opacity: 50%; font: 1em sans-serif; margin-left: 20%; margin-top: 2%;" id="regCard">
+    <div class="card-header"></div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <input pattern="[a-zA-Z]+" id="userFname" minlength="3" name="name" class="form-control"
+            placeholder="Enter Fullname" required>
         </div>
-      </nav>
-      <button type="button" class="btn btn-outline-primary mr-sm-2 " data-toggle="modal" data-target="#exampleModalScrollable">
-          User Login
-        </button>
-        <button type="button" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#exampleModalScrollable2">
-            Admin Login
-          </button>
-      
-      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-      <script type="text/javascript" src="js/bootstrap.min.js"></script>
-      <script>
-      </script>
-      </body>
+        <div class="form-group">
+          <input type="email" id="userEmail" inputmode="email" class="form-control" name="email"
+            placeholder="Enter Email" required>
+          <small id="emailHelp" class="form-text text-muted"><i>We'll never share your email with anyone else.</i> </small>
+        </div>
+        <div class="form-group">
+          <input pattern="\d*" id="userContact" inputmode="numeric" class="form-control" name="contact"
+            placeholder="Enter PhoneNumber" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="userAddress" class="form-control" name="address" placeholder="Enter Address" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="userPassword" minlength="8" maxlength="20" class="form-control" name="password" placeholder="Enter Password"
+            required>
+          <small id="passwordHelp" class="form-text text-muted">Must be 8-20 character long.</small>
+        </div>
+        <div class="form-group">
+          <input type="password" id="userPassword2" class="form-control" minlength="8" maxlength="20" placeholder="Confirm Password" required>
+        </div>
+        <div class="form-group">
+             <label for="#userCheck">
+             <input class="form-check" type="checkbox" id="userCheck" required><small class="form-text text-muted">Accept Terms and Conditions</small></label>
+        </div>
+        <div class="form-group">
+          <small class="form-text "><a href="#!">Terms and Conditions</a></small>
+        </div>
+        <button type="submit" class="btn btn-success id="userReg"> Register</button>
+      </form>
+    </div>
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script>
+  </script>
+</body>

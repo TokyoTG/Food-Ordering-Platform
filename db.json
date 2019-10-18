@@ -3,10 +3,10 @@
     {
       "id": 1,
       "name": "Amala and Ewedu Soup",
-      "price": "1800"
+      "price": "2800"
     },
     {
-      "name": "Fried",
+      "name": "Fried Rice and Chicken",
       "price": "1200",
       "id": 2
     },
@@ -23,6 +23,13 @@
       "food": "Amala",
       "address": "Aja",
       "quantity": "2"
+    },
+    {
+      "name": "Toyeeb",
+      "food": "Shawarma",
+      "address": "Aja",
+      "quantity": "1",
+      "id": 2
     }
   ],
   "users": [
@@ -30,15 +37,28 @@
       "id": 1,
       "name": "Toyeeb",
       "address": "Aja",
-      "favorites": [
-        {
-          "id": 1,
-          "name": "Amala",
-          "price": "1800"
-        }
-      ],
       "email": "tboynoni@yahoo.com",
       "password": "toyeeb1"
+    }
+  ],
+  "favorites": [
+    {
+      "userId": "1",
+      "name": "Amala and Ewedu Soups",
+      "price": "2800",
+      "id": 2
+    },
+    {
+      "userId": "1",
+      "name": "Shawarma",
+      "price": "2500",
+      "id": 4
+    },
+    {
+      "userId": "1",
+      "name": "Fried Rice and Chicken",
+      "price": "1200",
+      "id": 5
     }
   ]
 }

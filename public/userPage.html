@@ -1,244 +1,331 @@
 <!DOCTYPE html>
+
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection"/>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <title>User Page</title>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0f3e5f;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="navbar-brand" style="color: blue;" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <a class="navbar-brand" style="color: blue;" href="index.html">Log Out</a>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0f3e5f;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="navbar-brand" style="color: blue;" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <a class="navbar-brand" style="color: blue;" href="index.html">Log Out</a>
+      </form>
+    </div>
+  </nav>
+
+  <div class="modal fade" id="ordermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Order Food</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="orderForm">
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="orderId">
+              <input type="text" id="inputFood" class="form-control" placeholder="Food Name" readonly>
+            </div>
+            <div class="form-group">
+              <input type="text" id="upPrice" class="form-control" placeholder="Food Price" readonly>
+            </div>
+            <div class="form-group">
+              <input type="number" id="inputQuantity" value="1" min="1" max="3" class="form-control"
+                placeholder="Number of Plate" required>
+            </div>
+            <input name="cbGroup2" id="idCheck" type="checkbox" value="value2_1">Add To Favorites
+            <button type="submit" class="btn btn-success" id="uOrder"> Order</button>
           </form>
         </div>
-      </nav> 
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
 
-      <div class="modal fade" id="ordermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">Order Food</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                  <input type="hidden" class="form-control" id="orderId">
-                  <input type="text" id="inputFood" class="form-control" placeholder="Food Name" readonly>
-                  </div>
-                  <div class="form-group">
-                      <input type="text" id="upPrice" class="form-control" placeholder="Food Price" readonly>
-                  </div>
-                  <div class="form-group">
-                  <input type="number" id="inputQuantity" class= "form-control" placeholder="Number of Plate" required>
-                  </div>
-                  <button type="submit" class="btn btn-success" id="uOrder"> Order</button>
-                </form>
-              </div>
-              <div class="modal-footer">
-              </div>
-            </div>
+  <div class="container">
+    <div class="card" style="width:40rem; align-self: auto;">
+      <div class="card-header">FOOD MENU</div>
+      <div class="card-body">
+        <table class="table table-dark table--hover table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Price <s>N</s></th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="tabMenu">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="card" style="width:40rem; align-self: auto;">
+      <div class="card-header">FAVORITE FOODS</div>
+      <div class="card-body">
+        <table class="table table-dark table--hover table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Price (Naira)</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="tabFav">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Edit Food</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" class="form-control" id="updateId">
+          <div class="form-group">
+            <input type="text" class="form-control" id="name" placeholder="Food Name" required>
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control" id="updPrice" placeholder="Food Price" required>
           </div>
         </div>
-
-  
-      <div class="container">
-      <div class="card" style="width:40rem; align-self: auto;">
-          <div class="card-header">FOOD MENU</div>
-          <div class="card-body">
-              <table class="table table-dark table--hover table-bordered">
-                  <thead>
-                      <tr>
-                          <th scope="col">Name</th>
-                          <th scope="col">Price (Naira)</th>
-                          <th scope="col">Action</th>
-                      </tr>
-                  </thead>
-                  <tbody id="tabMenu">
-                      
-                  </tbody>
-              </table>
-              </div>
-          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="editFood">Save changes</button>
         </div>
-        <div class="container">
-            <div class="card" style="width:40rem; align-self: auto;">
-                <div class="card-header">FAVORITE FOODS</div>
-                <div class="card-body">
-                    <table class="table table-dark table--hover table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price (Naira)</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabFav">
-                            
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-              </div>
-      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script>
+    populateFood();
+    populateFavFood();
 
-      populateFood();
-      populateFavFood();
+    function populateFood() {
+      $.ajax({
+        type: 'GET',
+        url: 'http://localhost:3000/food',
+        success: function (food) {
+          var tabItem = $("#tabMenu");
+          tabItem.empty();
+          $.each(food, function (i, foods) {
+            tabItem.append('<tr><td>' + foods.name + '</td><td>' + foods.price +
+              '</td><td class="text-right"><button class="btn btn-primary mr-sm-2" style= "width:150px;" onClick = "addToFav(' +
+              foods.id +
+              ')">Add To Favorites</button><button class="btn btn-success my-2 my-sm-0"  style="width:80px;" onClick = "getFoodName(' +
+              foods.id + ')">Order</button></td></tr>')
+          })
 
-         $("#uLog").click((e)=>{
-           e.preventDefault();
-          const inputEmail = $("#userEmail").val();
-          const inputPass = $("#userPass").val();
-          if( !inputEmail || !inputPass){
-            alert("Please fill in details");
-            return;
-          }else{
+        }
+
+      })
+    }
+
+    function getFoodName(id) {
+      $.ajax({
+        type: 'GET',
+        url: 'http://localhost:3000/food/' + id,
+        success: function (food) {
+          $("#orderId").val(food.id);
+          $("#inputFood").val(food.name);
+          $("#upPrice").val(food.price);
+          $("#ordermodal").modal('show');
+        },
+        error: function () {
+          console.log('Not found');
+        }
+      })
+    }
+
+    function populateFavFood() {
+      var uId = localStorage.getItem('userId')
+      $.ajax({
+        type: 'GET',
+        url: 'http://localhost:3000/favorites?userId=' + uId,
+        success: function (favorites) {
+          var tabItem = $("#tabFav");
+          tabItem.empty();
+          $.each(favorites, function (i, food) {
+            tabItem.append('<tr><td>' + food.name + '</td><td>' + food.price +
+              '</td><td class="text-right"><button class="btn btn-primary mr-sm-2" style= "width:80px;" onClick = "edit(' +
+              food.id +
+              ')">Edit</button><button class="btn btn-danger my-2 my-sm-0 " onClick="deluserFood(' + food
+              .id + ')"  style="width:80px;">Delete</button></td></tr>')
+          })
+
+        }
+
+      })
+    }
+
+    function addToFav(id) {
+      $.ajax({
+          type: 'GET',
+          url: 'http://localhost:3000/food/' + id,
+        })
+        .done(function (food) {
+          var newFavFood = food.name;
+          var newFavPrice = food.price;
+          var userFavId = localStorage.getItem('userId');
+          var newFav = {
+            userId: userFavId,
+            name: newFavFood,
+            price: newFavPrice
+          }
           $.ajax({
-            type: 'GET',
-            url: `http://localhost:3000/users?email=${inputEmail}&passord=${inputPass}`,
-            data:{
-              inputPass,
-              inputEmail
-            },
-            success: function (res) {
-              if(res.length){
-                localStorage.setItem('email', inputEmail);
-              window.location.assign("index.html")
-            }else{
-              alert("not ok");
-            } 
-            },
-            error: function(){
-              alert("invalid");
+            type: 'POST',
+            url: 'http://localhost:3000/favorites',
+            data: newFav,
+            success: function () {
+              alert('Food Added to Favorites');
+              populateFavFood();
             }
           })
+        })
+    }
+
+    $("#orderForm").submit((e) => {
+      var final;
+      var oId = $("#orderId").val();
+      var favFood = $("#inputFood").val();
+      var favPrice = $("#upPrice").val();
+      var ele = {
+        userId: localStorage.getItem('userId'),
+        name: favFood,
+        price: favPrice
+      }
+      if ($('#idCheck').prop('checked')) {
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:3000/favorites',
+          data: ele
+        })
+      }
+    })
+
+    function deluserFood(id) {
+      var delCon = window.confirm("Are you sure you want to delete this?");
+      if (delCon !== true) {
+        alert("cancelled");
+      } else {
+        $.ajax({
+          type: 'DELETE',
+          url: 'http://localhost:3000/favorites/' + id,
+          success: function () {
+            alert('record has been deleted')
+            populateFavFood();
+          },
+          error: function (error) {
+            alert("error")
+          }
+        })
+      }
+    }
+
+    function edit(id) {
+      $.ajax({
+        type: 'GET',
+        url: 'http://localhost:3000/favorites/' + id,
+        success: function (food) {
+          console.log(food);
+          $("#updateId").val(food.id);
+          $("#name").val(food.name);
+          $("#updPrice").val(food.price);
+          $("#editmodal").modal('show');
+        },
+        error: function () {
+          console.log('Not found');
         }
       })
-
-      function populateFood(){
-        $.ajax({
-          type: 'GET',
-          url:'http://localhost:3000/food',
-          success: function(food){
-            var tabItem = $("#tabMenu");
-            tabItem.empty();
-            $.each(food, function(i, foods){
-              tabItem.append('<tr><td>'+foods.name+'</td><td>'+foods.price+'</td><td class="text-right"><button class="btn btn-primary mr-sm-2" style= "width:150px;" onClick = "addToFav('+foods.id+')">Add To Favorites</button><button class="btn btn-success my-2 my-sm-0"  style="width:80px;" onClick = "getFoodName('+foods.id+')">Order</button></td></tr>')
-            })
-            
-          }
-
-        })
-      }
-     function getFoodName(id){
-        $.ajax({
-            type: 'GET',
-            url: 'http://localhost:3000/food/'+id,
-            success: function (food) {
-                $("#orderId").val(food.id);
-                $("#inputFood").val(food.name);
-                $("#upPrice").val(food.price);
-                $("#ordermodal").modal('show');
-            },
-            error: function(){
-                console.log('Not found');
-            }
-    })
-      }
-
-      function populateFavFood(){
-        $.ajax({
-          type: 'GET',
-          url:'http://localhost:3000/users/1',
-          success: function(users){
-            var tabItem = $("#tabFav");
-            tabItem.empty();
-            $.each(users.favorites, function(i, food){
-              tabItem.append('<tr><td>'+food.name+'</td><td>'+food.price+'</td><td class="text-right"><button class="btn btn-primary mr-sm-2" style= "width:80px;">Edit</button><button class="btn btn-danger my-2 my-sm-0 " onClick="deluserFood('+food.id+')"  style="width:80px;">Delete</button></td></tr>')
-            })
-            
-          }
-
-        })
-      }
-    function addToFav(id){
-        $.ajax({
-            type: 'GET',
-            url: 'http://localhost:3000/food/'+id,
-            success: function (food) {
-               console.log(food.name);
-               console.log(food.price);  
-            },
-            error: function(){
-                console.log('Not found');
-            }
-    })
-  }
-  
-  $("#uOrder").click((e) =>{
-    var final;
-    var oId = $("#orderId").val()
-    var favFood = $("#inputFood").val()
-    var favPrice = $("#upPrice").val()
-      var ele = {
-      food: favFood,
-      price: favPrice 
     }
-   
-    $.ajax({
-      type: 'GET',
-      url:'http://localhost:3000/users/1',
-    })
-    .done(function(users){
-      final = users.favorites;
-      final[oId] = ele;
-      console.log(JSON.stringify(final));
+
+    $("#editFood").click((e) => {
+      var uId = $("#updateId").val()
+      var uName = $("#name").val()
+      var cPrice = $("#updPrice").val();
+      console.log(uId);
+      var foodEdit = {
+        name: uName,
+        price: cPrice
+      }
+
       $.ajax({
         type: 'PATCH',
-        dataType: 'json',
-        url: 'http://localhost:3000/users/1',
-        data: { favorites: JSON.stringify(final)},
-        success: function(){
-          alert("ok");
+        url: 'http://localhost:3000/favorites/' + uId,
+        data: foodEdit,
+        success: function () {
+          alert('Food is updated');
+          $("#editmodal").modal('hide');
+          populateFavFood();
+          reset();
         },
-        error: function(){
-          alert("error")
+        error: function () {
+          alert("Error")
         }
       })
     })
-  })    
-  
-      function deluserFood (id) {
-         var delCon = window.confirm("Are you sure you want to delete this?");
-         if(delCon !== true){
-            alert("cancelled");
-         }else{
-            $.ajax({
-                type: 'DELETE',
-                url: 'http://localhost:3000/users?_embed=favorites/'+id,
-                success: function () {
-                    alert('record has been deleted')
-                },
-                error: function(error){
-                    alert("error")
-                }
-            })
-         }
-        } 
-    </script>
+
+    $("#orderForm").submit((e) => {
+      var orderAddress = localStorage.getItem('userAddress');
+      var orderName = localStorage.getItem('username');
+      var orderFood = $("#inputFood").val();
+      var orderQuantity = $("#inputQuantity").val();
+      var orderData = {
+        name: orderName,
+        food: orderFood,
+        address: orderAddress,
+        quantity: orderQuantity
+      }
+      $.ajax({
+          type: 'POST',
+          url: 'http://localhost:3000/orderedfoods',
+          data: orderData,
+        })
+        .done(function () {
+          alert('Order has Been Placed...')
+          $("#ordermodal").modal("hide");
+          reset();
+        })
+
+    })
+
+    function reset() {
+      $("#mainRead").val('');
+      $("#fname").val('');
+      $("#name").val('');
+      $("#fprice").val('');
+      $("#inputQuantity").val('');
+    }
+  </script>
 </body>

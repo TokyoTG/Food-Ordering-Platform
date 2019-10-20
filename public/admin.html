@@ -130,6 +130,7 @@
                 <th scope="col"> Customer Name</th>
                 <th scope="col">Food-Ordered</th>
                 <th scope="col">Quantity</th>
+                <th scope="col">Contact</th>
                 <th scope="col">Address</th>
               </tr>
             </thead>
@@ -191,7 +192,7 @@
           $.each(food, function (i, order) {
             listofOrders = $("#OrdersTable");
             listofOrders.append('<tr><td>' + order.name + '</td><td>' + order.food + '</td><td>' + order
-              .quantity + '</td><td>' + order.address + '</td></tr>')
+              .quantity + '</td><td>' + order.contact + '</td><td>'+order.address+'</td></tr>')
           })
         }
       })

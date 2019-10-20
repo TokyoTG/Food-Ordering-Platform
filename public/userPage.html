@@ -50,8 +50,12 @@
               <input type="number" id="inputQuantity" value="1" min="1" max="3" class="form-control"
                 placeholder="Number of Plate" required>
             </div>
-            <input name="cbGroup2" id="idCheck" type="checkbox" value="value2_1">Add To Favorites
-            <button type="submit" class="btn btn-success" id="uOrder"> Order</button>
+            <div class="form-group">
+              <label>
+                <input name="cbGroup2" id="idCheck" title="check to add food to favorites" type="checkbox"
+                  value="value2_1">Add To Favorites</label>
+            </div>
+            <button type="submit" class="btn btn-success btn-block" id="uOrder"> Order</button>
           </form>
         </div>
         <div class="modal-footer">
@@ -59,11 +63,11 @@
       </div>
     </div>
   </div>
-  <hr>
+  
 
-  <div class="container">
-    <div class="card" style="width:40rem; align-self: auto;">
-      <div class="card-header">FOOD MENU</div>
+  <div class="container" style="padding-top: 3%;">
+    <div class="card" style="width:40rem; ">
+      <div class="card-header" style="background-color: blue;"></div>
       <div class="card-body">
         <table class="table table-dark table--hover table-bordered">
           <thead>
@@ -195,23 +199,52 @@
           url: 'http://localhost:3000/food/' + id,
         })
         .done(function (food) {
-          var newFavFood = food.name;
-          var newFavPrice = food.price;
+          localStorage.setItem('foodName', food.name);
+          localStorage.setItem('foodPrice', food.price);
+          var newFoodFav = food.name;
           var userFavId = localStorage.getItem('userId');
-          var newFav = {
+          var userFavp = food.price;
+          var vData = {
             userId: userFavId,
-            name: newFavFood,
-            price: newFavPrice
+            name: newFoodFav,
+            price: userFavp
           }
           $.ajax({
-            type: 'POST',
-            url: 'http://localhost:3000/favorites',
-            data: newFav,
-            success: function () {
-              alert('Food Added to Favorites');
-              populateFavFood();
+            type: 'GET',
+            url: `http://localhost:3000/favorites?userId=${userFavId}&name=${newFoodFav}`,
+            data: vData,
+            success: function(res){
+              if(res.length){
+                favpop();
+              }else{
+                addnewFav();
+              }
             }
           })
+        })
+    }
+
+    function favpop(res) {
+      alert('You already have this food on your favorites');
+    }
+
+    function addnewFav() {
+      var newFavPrice = localStorage.getItem('foodPrice');
+      var newFavFood = localStorage.getItem('foodName');
+      var userIdFav = localStorage.getItem('userId');
+      var newFav = {
+        userId: userIdFav,
+        name: newFavFood,
+        price: newFavPrice
+      }
+      $.ajax({
+          type: 'POST',
+          url: 'http://localhost:3000/favorites',
+          data: newFav
+        })
+        .done(function () {
+          alert('Food has been added to Favorites');
+          populateFavFood();
         })
     }
 
@@ -299,12 +332,14 @@
     $("#orderForm").submit((e) => {
       var orderAddress = localStorage.getItem('userAddress');
       var orderName = localStorage.getItem('username');
+      var userC = localStorage.getItem('userContact')
       var orderFood = $("#inputFood").val();
       var orderQuantity = $("#inputQuantity").val();
       var orderData = {
         name: orderName,
         food: orderFood,
         address: orderAddress,
+        contact: userC,
         quantity: orderQuantity
       }
       $.ajax({

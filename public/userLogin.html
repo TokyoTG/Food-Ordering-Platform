@@ -48,16 +48,13 @@
         $.ajax({
           type: 'GET',
           url: `http://localhost:3000/users?email=${inputEmail}&password=${inputPass}`,
-          data: {
-            inputEmail,
-            inputPass
-          },
           success: function (res) {
             if (res.length) {
               localStorage.setItem('email', inputEmail);
               localStorage.setItem('userId', res[0].id);
               localStorage.setItem('userAddress', res[0].address);
               localStorage.setItem('username', res[0].name);
+              localStorage.setItem('userContact', res[0].contact);
               window.location.assign("userPage.html");
             } else {
               alert("not ok")

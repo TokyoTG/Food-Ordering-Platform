@@ -22,46 +22,46 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a class="navbar-brand" style="color: blue;" href="index.html">Log Out</a>
+        <a class="navbar-brand" style="color: blue;" href="index.html">Back</a>
       </form>
     </div>
   </nav>
   <div class="card" style="width: 50%; height: 50%; background: white, ; opacity: 50%; font: 1em sans-serif; margin-left: 20%; margin-top: 2%;" id="regCard">
-    <div class="card-header"></div>
+    <div class="card-header"> <h4>Register Form</h4></div>
     <div class="card-body">
-      <form>
+      <form id="regForm">
         <div class="form-group">
-          <input pattern="[a-zA-Z]+" id="userFname" minlength="3" name="name" class="form-control"
-            placeholder="Enter Fullname" required>
+          <input pattern="[a-zA-Z]+" id="uFname" name="name" class="form-control"
+            placeholder="Enter Fullname" title="Please Enter your full name here" required>
         </div>
         <div class="form-group">
-          <input type="email" id="userEmail" inputmode="email" class="form-control" name="email"
+          <input type="email" id="uEmail" inputmode="email" class="form-control" name="email" title="Please Enter a valid email"
             placeholder="Enter Email" required>
           <small id="emailHelp" class="form-text text-muted"><i>We'll never share your email with anyone else.</i> </small>
         </div>
         <div class="form-group">
-          <input pattern="\d*" id="userContact" inputmode="numeric" class="form-control" name="contact"
+          <input pattern="\d*" id="uContact" title="Please make sure your phone is correct" inputmode="numeric" class="form-control" name="contact"
             placeholder="Enter PhoneNumber" required>
         </div>
         <div class="form-group">
-          <input type="text" id="userAddress" class="form-control" name="address" placeholder="Enter Address" required>
+          <input type="text" id="uAddress" class="form-control" title="Enter where you want to be recieving your orders" name="address" placeholder="Enter Address" required>
         </div>
         <div class="form-group">
-          <input type="password" id="userPassword" minlength="8" maxlength="20" class="form-control" name="password" placeholder="Enter Password"
+          <input type="password" id="uPassword" title="Please enter a strong passsword" minlength="8" maxlength="20" class="form-control" name="password" placeholder="Enter Password"
             required>
           <small id="passwordHelp" class="form-text text-muted">Must be 8-20 character long.</small>
         </div>
         <div class="form-group">
-          <input type="password" id="userPassword2" class="form-control" minlength="8" maxlength="20" placeholder="Confirm Password" required>
+          <input type="password" id="uPassword2" title="Password must be the same" class="form-control" minlength="8" maxlength="20" placeholder="Confirm Password">
         </div>
         <div class="form-group">
-             <label for="#userCheck">
+             <label>
              <input class="form-check" type="checkbox" id="userCheck" required><small class="form-text text-muted">Accept Terms and Conditions</small></label>
         </div>
         <div class="form-group">
           <small class="form-text "><a href="#!">Terms and Conditions</a></small>
         </div>
-        <button type="submit" class="btn btn-success id="userReg"> Register</button>
+        <button type="submit" class="btn btn-success btn-block" id="userReg"> Register</button>
       </form>
     </div>
   </div>
@@ -69,5 +69,35 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script>
+
+    $("#regForm").submit((e)=>{
+      e.preventDefault();
+      var userRegData ={};
+       var ufname = $("#uFname").val();
+       var uEmail = $("#uEmail").val();
+       var uContact = $("#uContact").val();
+       var uAddress = $("#uAddress").val();
+       var uPassword = $("#uPassword").val();
+       userRegData = {
+         name: ufname,
+         address: uAddress,
+         email: uEmail,
+         password: uPassword,
+         contact: uContact
+       }
+       console.log(userRegData);
+       $.ajax({
+         type: 'POST',
+         url:'http://localhost:3000/users',
+         data: userRegData,
+       })
+       .done(function(){
+         alert("You have successfully registered with us");
+         window.location.assign("userLogin.html");
+       })
+       .fail(function(){
+         alert('error');
+       })
+    })
   </script>
 </body>

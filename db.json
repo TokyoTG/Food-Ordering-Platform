@@ -22,14 +22,32 @@
       "name": "Toyeeb",
       "food": "Amala",
       "address": "Aja",
-      "quantity": "2"
+      "quantity": "2",
+      "contact": "07000334465"
     },
     {
       "name": "Toyeeb",
       "food": "Shawarma",
       "address": "Aja",
-      "quantity": "1",
+      "contact": "07000334465",
+      "quantity": "2",
       "id": 2
+    },
+    {
+      "name": "Ganiu",
+      "food": "Amala and Ewedu Soup",
+      "address": "19,Rufai Street Ajegunle Apapa, Lagos.",
+      "contact": "07060732084",
+      "quantity": "1",
+      "id": 3
+    },
+    {
+      "name": "Ganiu",
+      "food": "Shawarma",
+      "address": "19,Rufai Street Ajegunle Apapa, Lagos.",
+      "contact": "07060732084",
+      "quantity": "1",
+      "id": 4
     }
   ],
   "users": [
@@ -38,7 +56,16 @@
       "name": "Toyeeb",
       "address": "Aja",
       "email": "tboynoni@yahoo.com",
-      "password": "toyeeb1"
+      "password": "toyeeb1",
+      "contact": "07000334465"
+    },
+    {
+      "name": "Ganiu",
+      "address": "19,Rufai Street Ajegunle Apapa, Lagos.",
+      "email": "tboynonilekan@yahoo.com",
+      "password": "babatunde",
+      "contact": "07060732084",
+      "id": 2
     }
   ],
   "favorites": [
@@ -49,16 +76,40 @@
       "id": 2
     },
     {
-      "userId": "1",
-      "name": "Shawarma",
-      "price": "2500",
-      "id": 4
+      "userId": "2",
+      "name": "Amala and Ewedu Soup",
+      "price": "2800",
+      "id": 6
+    },
+    {
+      "userId": "2",
+      "name": "Fried Rice and Chicken",
+      "price": "1200",
+      "id": 7
     },
     {
       "userId": "1",
       "name": "Fried Rice and Chicken",
       "price": "1200",
-      "id": 5
+      "id": 9
+    },
+    {
+      "userId": "1",
+      "name": "Shawarma",
+      "price": "2500",
+      "id": 10
+    },
+    {
+      "userId": "1",
+      "name": "Fried Rice and Chicken",
+      "price": "1200",
+      "id": 11
+    },
+    {
+      "userId": "2",
+      "name": "Shawarma",
+      "price": "2500",
+      "id": 12
     }
   ]
 }

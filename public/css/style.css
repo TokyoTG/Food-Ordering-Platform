@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#services {
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 320px));
+    width: 80%;
+    grid-gap: 4px;
+    margin: 0 auto;
+    margin-top: 20px;
+    /* background: gray; */
+}
+
+#select {
+
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 30px;
+}
+
+a {
+    color: white;
+}
+
+.loc {
+    padding: 5px;
+    width: 100%;
+}
+
+.locWrapper {
+    width: 45%;
+}
+
+.area {
+    position: absolute;
+    right: 0;
+}
+
+select,
+.locWrapper {
+    display: inline-block;
+}
+
+option,
+select {
+    border: 1px solid blue;
+}

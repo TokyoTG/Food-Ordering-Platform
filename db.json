@@ -1,9 +1,8 @@
 {
-  "food": [
-    {
+  "food": [{
       "id": 1,
       "name": "Amala and Ewedu Soup",
-      "price": "2800"
+      "price": "1800"
     },
     {
       "name": "Fried Rice and Chicken",
@@ -14,10 +13,14 @@
       "name": "Shawarma",
       "price": "2500",
       "id": 3
+    },
+    {
+      "name": "Eba and Egusi",
+      "price": "1500",
+      "id": 4
     }
   ],
-  "orderedfoods": [
-    {
+  "orderedfoods": [{
       "id": 1,
       "name": "Toyeeb",
       "food": "Amala",
@@ -48,10 +51,33 @@
       "contact": "07060732084",
       "quantity": "1",
       "id": 4
+    },
+    {
+      "name": "Toyeeb",
+      "food": "Amala and Ewedu Soup",
+      "address": "Aja",
+      "contact": "07000334465",
+      "quantity": "1",
+      "id": 5
+    },
+    {
+      "name": "Toyeeb",
+      "food": "Amala and Ewedu Soup",
+      "address": "Aja",
+      "contact": "07000334465",
+      "quantity": "1",
+      "id": 6
+    },
+    {
+      "name": "Toyeeb",
+      "food": "Amala and Ewedu Soup",
+      "address": "Aja",
+      "contact": "07000334465",
+      "quantity": "2",
+      "id": 7
     }
   ],
-  "users": [
-    {
+  "users": [{
       "id": 1,
       "name": "Toyeeb",
       "address": "Aja",
@@ -68,10 +94,9 @@
       "id": 2
     }
   ],
-  "favorites": [
-    {
+  "favorites": [{
       "userId": "1",
-      "name": "Amala and Ewedu Soups",
+      "name": "Amala and Ewedu Soup",
       "price": "2800",
       "id": 2
     },
@@ -98,18 +123,6 @@
       "name": "Shawarma",
       "price": "2500",
       "id": 10
-    },
-    {
-      "userId": "1",
-      "name": "Fried Rice and Chicken",
-      "price": "1200",
-      "id": 11
-    },
-    {
-      "userId": "2",
-      "name": "Shawarma",
-      "price": "2500",
-      "id": 12
     }
   ]
 }

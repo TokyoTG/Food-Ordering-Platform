@@ -22,8 +22,15 @@
     margin-top: 30px;
 }
 
-a {
-    color: white;
+h1,
+h4,
+p {
+    color: #427497;
+}
+
+#welcome {
+    text-align: center;
+
 }
 
 .loc {
@@ -47,5 +54,26 @@ select,
 
 option,
 select {
-    border: 1px solid blue;
+    border: 1px solid #427497;
+}
+
+.fa {
+    font-size: 2.5em;
+}
+
+.nav-item .navbar-brand {
+    color: white;
+}
+
+.nav-item:hover .navbar-brand {
+    color: rgb(90, 84, 84);
+}
+
+.active .navbar-brand {
+    color: rgb(90, 84, 84);
+    font-weight: bold;
+}
+
+.form-inline .btn {
+    color: white;
 }

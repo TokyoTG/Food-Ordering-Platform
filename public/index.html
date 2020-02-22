@@ -4,8 +4,11 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection" />
+  <link rel="stylesheet" type="text/css" href="./css/all.min.css">
+  <link type="text/css" rel="stylesheet" href="./css/fontawesome.min.css" />
   <link rel="stylesheet" href="./css/style.css">
   <!--Let browser know website is optimized for mobile-->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <title>Home</title>
@@ -20,14 +23,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="navbar-brand" style="color: white" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="navbar-brand" href="index.html">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="navbar-brand" style="color:white" href="guest.html">See Our Foods</a>
+          <a class="navbar-brand" href="guest.html">See Our Foods</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="navbar-brand dropdown-toggle" style="color: white;" href="#" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             About Us
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -39,9 +42,9 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a href="userLogin.html" class="btn  mr-sm-2" style="color: white;">User Login</a>
-        <button type="button" class="btn  my-2 my-sm-0" data-toggle="modal" data-target="#exampleModalScrollable2"
-          style="color: white;">
+        <a href="userLogin.html" class="btn  mr-sm-2 navbar-brand ">User Login</a>
+        <button type="button" class="btn  my-2 my-sm-0 navbar-brand" data-toggle="modal"
+          data-target="#exampleModalScrollable2">
           Admin Login
         </button>
       </form>
@@ -50,7 +53,7 @@
 
   <main>
     <section id="select">
-      <h1>Everything you need, delivered now</h1>
+      <h1 id="welcome">Everything you need, delivered now</h1>
       <h4>Deliver to</h4>
       <div class="locWrapper">
         <select name="" class="loc">
@@ -70,26 +73,37 @@
     <section id="services">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <h1><i class="fas fa-utensils"></i></h1>
+          <h6 class="card-subtitle mb-2 text-muted">Restaurant</h6>
+          <p class="card-text"> Food you love from reataurant near you</p>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <h1><i class="fas fa-cocktail"></i></h1>
+          <h6 class="card-subtitle mb-2 text-muted">Party</h6>
+          <p class="card-text">Alcholic and more to your party started</p>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <h1><i class="fas fa-shopping-cart"></i></h1>
+          <h6 class="card-subtitle mb-2 text-muted">Supermarket</h6>
+          <p class="card-text">Fresh groceries and everyday essentials</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h1><i class="fas fa-prescription-bottle-alt"></i></h1>
+          <h6 class="card-subtitle mb-2 text-muted">Pharmacy</h6>
+          <p class="card-text">Medication and personal care.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h1><i class="fas fa-shopping-bag"></i></h1>
+          <h6 class="card-subtitle mb-2 text-muted">Shopping</h6>
+          <p class="card-text">Gifts, electronics,sports and more</p>
         </div>
       </div>
     </section>
@@ -123,7 +137,6 @@
       </div>
     </div>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/gen.js"></script>

@@ -3,14 +3,20 @@
     padding: 0;
 }
 
-#services {
-    padding-top: 15px;
+
+.card p {
+    text-align: center;
+}
+
+#services,
+.grid {
+    padding-top: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 320px));
     width: 80%;
     grid-gap: 4px;
     margin: 0 auto;
-    margin-top: 20px;
+
     /* background: gray; */
 }
 
@@ -24,7 +30,9 @@
 
 h1,
 h4,
-p {
+p,
+h3,
+option {
     color: #427497;
 }
 
@@ -69,11 +77,71 @@ select {
     color: rgb(90, 84, 84);
 }
 
-.active .navbar-brand {
+.active .navbar-brand,
+#active {
     color: rgb(90, 84, 84);
     font-weight: bold;
 }
 
 .form-inline .btn {
     color: white;
+}
+
+.form-inline .btn:hover {
+    color: rgb(90, 84, 84);
+}
+
+.grid {
+    width: 100%;
+
+}
+
+#details h1 {
+    text-align: center;
+}
+
+#main-content h6 {
+    margin: 0 0 0 20%;
+    color: #427497;
+}
+
+#main-content {
+    margin-top: 20px;
+}
+
+#details {
+    border-top: 1px solid #427497;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+footer {
+    width: 100%;
+    bottom: 0;
+    background: #427497;
+    text-align: center;
+    padding: 5px;
+}
+
+footer li {
+    display: inline;
+}
+
+footer li a {
+    display: inline-block;
+    color: white;
+    margin-left: 18px;
+    transition: 0.3s;
+}
+
+footer p {
+    color: white;
+}
+
+footer li a:hover {
+
+    transform: scale(1.2);
+    text-decoration: none;
 }

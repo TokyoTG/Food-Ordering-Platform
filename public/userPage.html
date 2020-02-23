@@ -4,12 +4,15 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection" />
   <!--Let browser know website is optimized for mobile-->
+  <link rel="stylesheet" type="text/css" href="./css/all.min.css">
+  <link type="text/css" rel="stylesheet" href="./css/fontawesome.min.css" />
+  <link rel="stylesheet" href="./css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <title>User Page</title>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0f3e5f;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #427497;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -17,12 +20,22 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="navbar-brand" style="color: blue;" href="index.html">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="navbar-brand" href="index.html">Home <span class="sr-only">(current)</span></a>
         </li>
+        <!-- <li class="nav-item">
+          <a class="navbar-brand" href="guest.html">See Our Foods</a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand" href="registerPage.htmls">Register</a>
+        </li> -->
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a class="navbar-brand" style="color: blue;" href="index.html">Log Out</a>
+        <a href="index.html" class="btn  mr-sm-2 navbar-brand ">Log Out</a>
+        <button type="button" class="btn  my-2 my-sm-0 navbar-brand" data-toggle="modal"
+          data-target="#exampleModalScrollable2" id="active">
+          User
+        </button>
       </form>
     </div>
   </nav>
@@ -63,47 +76,84 @@
       </div>
     </div>
   </div>
-  
+  <main>
+    <section id="sideNav">
+      <nav>
+        <div id="prof">
+          <img src="./image/login_icon.png" alt="Admin Image" id="bg">
+          <a href="./image/login_icon.png" id="linkImg"><img src="./image/login_icon.png" alt="Admin Image"
+              class="profile-pic"></a>
+          <div class="p-image">
+            <i class="fa fa-camera upload-button" id="upButton"></i>
+            <input class="file-upload" type="file" accept="image/*" id="file" />
+          </div>
+        </div>
+        <ul>
+          <li><a href="#tab1">Food List</a></li>
+          <li><a href="#tab2">Favorites</a></li>
+        </ul>
+      </nav>
+    </section>
+    <section id="welcomeUser">
+      <h1 id="helloText">Hello </h1>
+      <p>You are welcome</p>
+    </section>
+    <section>
+      <div class="container" style="padding-top: 3%; " id="tab1">
+        <div class="card" style="width:40rem; color: white;">
+          <div class="card-header" style="background-color: #427497; font-weight: bold;">LIST OF FOODS</div>
+          <div class="card-body">
+            <table class="table table-dark table--hover table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price <s>N</s></th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="tabMenu">
 
-  <div class="container" style="padding-top: 3%;">
-    <div class="card" style="width:40rem; ">
-      <div class="card-header" style="background-color: blue;"></div>
-      <div class="card-body">
-        <table class="table table-dark table--hover table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Price <s>N</s></th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody id="tabMenu">
-
-          </tbody>
-        </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <hr>
-  <div class="container">
-    <div class="card" style="width:40rem; align-self: auto;">
-      <div class="card-header">FAVORITE FOODS</div>
-      <div class="card-body">
-        <table class="table table-dark table--hover table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Price (Naira)</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody id="tabFav">
+      <hr>
+      <div class="container" id="tab2">
+        <div class="card" style="width:40rem; align-self: auto;">
+          <div class="card-header">FAVORITE FOODS</div>
+          <div class="card-body">
+            <table class="table table-dark table--hover table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price (Naira)</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="tabFav">
 
-          </tbody>
-        </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+    <section>
+      <footer>
+        <h3>Contact Us</h3>
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+          <li><a href="#"><i class="fas fa-phone"></i> Phone</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> Mail</a></li>
+        </ul>
+        <p>&copy; Tokyo 2020</p>
+      </footer>
+    </section>
+  </main>
+
+
   <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -132,9 +182,12 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script src="./js/js.js"></script>
   <script>
     populateFood();
     populateFavFood();
+    let getUser = localStorage.getItem('username');
+    $("#helloText").text(`Hello ${getUser.split(' ')[1]}`)
 
     function populateFood() {
       $.ajax({
@@ -213,10 +266,10 @@
             type: 'GET',
             url: `http://localhost:3000/favorites?userId=${userFavId}&name=${newFoodFav}`,
             data: vData,
-            success: function(res){
-              if(res.length){
+            success: function (res) {
+              if (res.length) {
                 favpop();
-              }else{
+              } else {
                 addnewFav();
               }
             }

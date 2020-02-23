@@ -105,7 +105,8 @@
       <nav>
         <div id="prof">
           <img src="./image/login_icon.png" alt="Admin Image" id="bg">
-          <a href="./image/login_icon.png"><img src="./image/login_icon.png" alt="Admin Image" class="profile-pic"></a>
+          <a href="./image/login_icon.png" id="linkImg"><img src="./image/login_icon.png" alt="Admin Image"
+              class="profile-pic"></a>
           <div class="p-image">
             <i class="fa fa-camera upload-button" id="upButton"></i>
             <input class="file-upload" type="file" accept="image/*" id="file" />
@@ -118,68 +119,68 @@
       </nav>
     </section>
     <section>
+      <div class="container" id="tab1">
+        <div class="jumbotron">
+          <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <button type="button" style="float:right;" class="btn btn-primary" data-toggle="modal"
+                data-target="#exampleModalScrollable">
+                Add New Food
+              </button>
+              <br>
+              <h5 class="card-title">Food List</h5>
+              <table class="table table-dark table--hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price <s>N</s></th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tabBoot">
 
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <br>
+      <br>
+      <div class="container" id="tab2">
+        <div class="jumbotron">
+          <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <h5 class="card-title">Orders</h5>
+              <table class="table table-dark table--hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col"> Customer Name</th>
+                    <th scope="col">Food-Ordered</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Address</th>
+                  </tr>
+                </thead>
+                <tbody id="OrdersTable">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <hr>
+      <div id="delConfirm"></div>
     </section>
-    <div class="container" id="tab1">
-      <div class="jumbotron">
-        <div class="card">
-          <div class="card-header"></div>
-          <div class="card-body">
-            <button type="button" style="float:right;" class="btn btn-primary" data-toggle="modal"
-              data-target="#exampleModalScrollable">
-              Add New Food
-            </button>
-            <br>
-            <h5 class="card-title">Food List</h5>
-            <table class="table table-dark table--hover table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Price <s>N</s></th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody id="tabBoot">
 
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="container" id="tab2">
-      <div class="jumbotron">
-        <div class="card">
-          <div class="card-header"></div>
-          <div class="card-body">
-            <h5 class="card-title">Orders</h5>
-            <table class="table table-dark table--hover table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col"> Customer Name</th>
-                  <th scope="col">Food-Ordered</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Contact</th>
-                  <th scope="col">Address</th>
-                </tr>
-              </thead>
-              <tbody id="OrdersTable">
-
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-    <hr>
-    <div id="delConfirm"></div>
     <section>
       <footer>
         <h3>Contact Us</h3>
@@ -194,11 +195,9 @@
     </section>
   </main>
 
-
-
-
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script src="./js/js.js"></script>
   <script>
     showOrders();
     listAllFoods();
@@ -339,26 +338,26 @@
       })
     })
 
-    var readURL = function (input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
+    // var readURL = function (input) {
+    //   if (input.files && input.files[0]) {
+    //     var reader = new FileReader();
 
-        reader.onload = function (e) {
-          $('.profile-pic').attr('src', e.target.result);
-          $('#bg').attr('src', e.target.result);
-        }
+    //     reader.onload = function (e) {
+    //       $('.profile-pic').attr('src', e.target.result);
+    //       $('#bg').attr('src', e.target.result);
+    //     }
 
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
+    //     reader.readAsDataURL(input.files[0]);
+    //   }
+    // }
 
-    $(".file-upload").on('change', function () {
-      readURL(this);
-    });
+    // $(".file-upload").on('change', function () {
+    //   readURL(this);
+    // });
 
-    $(".upload-button").on('click', function () {
-      $(".file-upload").click();
-    });
+    // $(".upload-button").on('click', function () {
+    //   $(".file-upload").click();
+    // });
   </script>
 </body>
 

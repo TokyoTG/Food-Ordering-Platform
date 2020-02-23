@@ -1,5 +1,6 @@
 {
-  "food": [{
+  "food": [
+    {
       "id": 1,
       "name": "Amala and Ewedu Soup",
       "price": "1800"
@@ -20,7 +21,8 @@
       "id": 4
     }
   ],
-  "orderedfoods": [{
+  "orderedfoods": [
+    {
       "id": 1,
       "name": "Toyeeb",
       "food": "Amala",
@@ -77,7 +79,8 @@
       "id": 7
     }
   ],
-  "users": [{
+  "users": [
+    {
       "id": 1,
       "name": "Toyeeb",
       "address": "Aja",
@@ -92,9 +95,18 @@
       "password": "babatunde",
       "contact": "07060732084",
       "id": 2
+    },
+    {
+      "name": "Ganiu Toyeeb ",
+      "address": "19 Rufai Street.",
+      "email": "ganiu.toyeeb.a@gmail.com",
+      "password": "babatunde",
+      "contact": "07069792084",
+      "id": 3
     }
   ],
-  "favorites": [{
+  "favorites": [
+    {
       "userId": "1",
       "name": "Amala and Ewedu Soup",
       "price": "2800",
@@ -123,6 +135,12 @@
       "name": "Shawarma",
       "price": "2500",
       "id": 10
+    },
+    {
+      "userId": "3",
+      "name": "Amala and Ewedu Soup",
+      "price": "1800",
+      "id": 11
     }
   ]
 }
